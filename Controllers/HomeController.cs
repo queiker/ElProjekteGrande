@@ -6,32 +6,29 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using El_Projekte_Grande.ViewModels;
 
 namespace El_Projekte_Grande.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IProductRepository _productRepository; 
+        private readonly ICategoryRepository _categoryCategory;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IProductRepository productRepository,ICategoryRepository categoryRepository)
         {
-            _logger = logger;
+            _productRepository= productRepository;
+            _categoryCategory = categoryRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var productListViewModel = new ProductListViewModel();
+            productListViewModel.Products = _productRepository.GetAllProduct;
+            return View(productListViewModel);
+
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+   
     }
 }
