@@ -28,6 +28,8 @@ namespace El_Projekte_Grande
             services.AddControllersWithViews();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IChatRepositories, ChatRepository>();
+
             
 
         }
