@@ -7,6 +7,8 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;1,500&family=Lobster&display=swap" rel="stylesheet">
 
@@ -15,17 +17,24 @@
 </head>
 
 <body>
+
+<!-- side navbar-.// -->
 <aside class="side-nav" id="show-side-navigation1">
     <i class="fa fa-bars close-aside hidden-sm hidden-md hidden-lg" data-close="show-side-navigation1"></i>
     <div class="heading">
+    
+        @* clock *@
+        @* <h1 id="clock">Clock</h1> *@
 
-        <div class="info">
-            <h3>
-                <a href="#">Data i Zegarek</a>
-            </h3>
-            <p>Lorem ipsum dolor sit amet consectetur.</p>
-        </div>
+<div class="clock">
+   <div class="time"></div>
+   <div class="date"></div>
+   <div class="weekday"></div>
+</div>
+<div class="rotateAnimation">
+</div>
     </div>
+ 
 
     <ul class="categories">
         <li>
@@ -63,57 +72,43 @@
         </li>
     </ul>
 </aside>
-<!-- side navbar-.// -->
+<!-- top navbar.// -->
+
 
 <section id="contents">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
+    <nav class="navbar " >
 
-                <a class="navbar-brand" href="#">Strefa<span class="main-color">Inwestora</span></a>
-            </div>
+        <div class="navbar-header">
 
-            <div class="collapse navbar-collapse navbar-right">
-
-                <li class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Konto
-
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="#"><i class="fa fa-user-o fw"></i> Moje konto</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-envelope-o fw"></i> Wiadomosci</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-bell-o fw"></i> Inwestycje</a>
-                            </li>
-                            <li role="separator" class="divider"></li>
-                            <li>
-                                <a href="#"><i class="fa fa-sign-out"></i> Log out</a>
-                            </li>
-                        </ul>
-                    </button>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-comments"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fa fa-bell-o"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i>
-                    </a>
-                </li>
-
-            </div>
+            <a class="navbar-brand" href="#">Strefa<span class="main-color">Inwestora</span></a>
         </div>
+
+          
+               
+                       
+        <li>
+            <a href="#"><i class=" fa fa-user-o fw"></i> Moje konto</a>
+        </li>
+        <li>
+            <a href="#"><i class=" fa fa-envelope-o fw"></i> Wiadomosci</a>
+        </li>
+        <li>
+            <a href="#"><i class="fa fa-bell-o fw"></i> Inwestycje</a>
+        </li>
+        <li role="separator" class="divider"></li>
+        <li>
+            <a href="#"><i class="fa fa-sign-out"></i> Log out</a>
+        </li>
+                
+               
+                
+        <li>
+            <a href="#">
+                <i data-show="show-side-navigation1" class="fa fa-bars show-side-btn"></i>
+            </a>
+        </li>
+
+      
 
 
     </nav>
@@ -166,22 +161,67 @@
             </div>
         </div>
     </section>
-   <footer class="bg-light text-center text-lg-start">
-     <!-- Copyright -->
-     <div class="text-center p-3" style="background-color:  #535465;;">
-       © 2021 Copyright: JGD
-       <a class="text-dark" href="">StrefaInwestora</a>
-     </div>
-     <!-- Copyright -->
-   </footer>
+    <footer class="bg-light text-center text-lg-start">
+        <!-- Copyright -->
+        <div class="text-center text-light p-3" style="background-color: black;">
+            © 2021 Copyright: JGD
+            <a class="text-light" href="">StrefaInwestora</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
 
 </section>
 
 <script src='http://code.jquery.com/jquery-latest.js'></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
 
 </html>
+
+<script >
+var setTimer = setInterval(showTime, 1000)
+
+function showTime(){
+ 
+  const date = new Date();
+  
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  let seconds = date.getSeconds();
+  let dd = date.getDate();
+  let mm = date.getMonth()+1; 
+  let yyyy = date.getFullYear();
+  if(dd<10) 
+  {
+      dd='0'+dd;
+  } 
+  if(mm<10) 
+  {
+      mm='0'+mm;
+  } 
+  today = dd+'/'+mm+'/'+yyyy;
+
+  currentTime = hours + '<span>:</span>' + minutes + '<span>:</span>' + seconds;
+  
+  let weekday = new Array(7);
+  weekday[0] = "Niedziela";
+  weekday[1] = "Poniedzialek";
+  weekday[2] = "Wtorek";
+  weekday[3] = "Sroda";
+  weekday[4] = "Czwartek";
+  weekday[5] = "Piatek";
+  weekday[6] = "Sobota";
+
+  let weekdays = weekday[date.getDay()];
+
+  let output = document.querySelector(".time");
+  let outputdate = document.querySelector('.date');
+  let outputday = document.querySelector('.weekday')
+  
+  outputdate.innerHTML = today;
+  output.innerHTML = currentTime;
+  outputday.innerHTML = weekdays;
+}
+
+</script>

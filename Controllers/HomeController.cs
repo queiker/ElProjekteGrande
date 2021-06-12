@@ -15,7 +15,7 @@ namespace El_Projekte_Grande.Controllers
     public class HomeController : Controller
     {
         private readonly IProductRepository _productRepository; 
-        private readonly ICategoryRepository _categoryCategory;
+        private readonly ICategoryRepository _categoryRepository;
         private readonly IChatRepositories _chatRepository;
 
 
@@ -24,7 +24,7 @@ namespace El_Projekte_Grande.Controllers
         public HomeController(IProductRepository productRepository,ICategoryRepository categoryRepository, IChatRepositories chatRepositories)
         {
             _productRepository= productRepository;
-            _categoryCategory = categoryRepository;
+            _categoryRepository = categoryRepository;
             _chatRepository = chatRepositories;
 
         }

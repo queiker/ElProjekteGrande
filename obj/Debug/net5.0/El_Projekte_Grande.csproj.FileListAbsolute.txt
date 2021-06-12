@@ -336,3 +336,4 @@ C:\Users\domin\Desktop\ElProjekteGrande\obj\Debug\net5.0\El_Projekte_Grande.dll
 C:\Users\domin\Desktop\ElProjekteGrande\obj\Debug\net5.0\ref\El_Projekte_Grande.dll
 C:\Users\domin\Desktop\ElProjekteGrande\obj\Debug\net5.0\El_Projekte_Grande.pdb
 C:\Users\domin\Desktop\ElProjekteGrande\obj\Debug\net5.0\El_Projekte_Grande.genruntimeconfig.cache
+C:\Users\domin\Desktop\ElProjekteGrande\bin\Debug\net5.0\BCrypt.Net-Next.dll
