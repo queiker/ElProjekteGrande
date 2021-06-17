@@ -10,8 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
+using El_Projekte_Grande.Helpers;
 using El_Projekte_Grande.Models;
 
 namespace El_Projekte_Grande
@@ -21,14 +23,28 @@ namespace El_Projekte_Grande
     public class Startup
     {
         
+            public Startup(IConfiguration configuration)
+            {
+                Configuration = configuration;
+            }
+
+            public IConfiguration Configuration { get; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-       
+
+            services.AddCors();
+            services.AddDbContext<UserContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
             services.AddControllersWithViews();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
-            
+            services.AddScoped<IChatRepositories, ChatRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<JwtService>();
+
+
 
         }
 
@@ -48,6 +64,13 @@ namespace El_Projekte_Grande
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+
+            app.UseCors(options => options
+                .WithOrigins(new [] {"http://localhost:3000","https://localhost:44337"})
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials()
+            );
 
             app.UseAuthorization();
 

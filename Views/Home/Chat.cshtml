@@ -1,0 +1,18 @@
+﻿@model ChatViewModel
+
+
+    @foreach (var news in Model.News)
+    {
+
+
+
+        <div class="col-md-6">
+            <div class="chart-container">
+                <h3>@news.Nick; </h3>
+                <p>
+                    @news.Message
+                </p>
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    }
